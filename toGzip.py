@@ -2,6 +2,7 @@ import os
 import sys
 import gzip
 import shutil
+from datetime import datetime
 
 #funkce pro kompresi souboru
 
@@ -27,3 +28,8 @@ def folderToGzip(folder):
             #neprovadi kompresi jiz zkomprimovanych souboru
             if inFile[-2:] != 'gz':
                 fileToGzip(inFile)
+
+#funkce pocitajici zbytek po celociselnem deleni 30ti
+def checkDate(firstDate,secondDate):
+    #rozdil data spusteni skriptu a referencniho data
+    return (firstDate - secondDate).days % 30

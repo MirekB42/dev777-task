@@ -1,12 +1,7 @@
-#!/usr/bin/python3
-
 import gzip
 import shutil
 import os
 import sys
-
-#slozka ve ktere se pracuje
-DIRECTORY = './log'
 
 #dekomprese souboru
 def fileToUzip(filePath):
@@ -16,11 +11,10 @@ def fileToUzip(filePath):
     os.remove(filePath)
 
 #dekomprese vsech souboru vcetne tech v podlsozkach
-def folderUzip():
-    for root, subdirs, files in os.walk(DIRECTORY):
+def folderUzip(folder):
+    for root, subdirs, files in os.walk(folder):
         for fileName in files:
-            inFile = os.path.join(root, fileName)
-            fileToUzip(inFile)
+            if fileName[-2:] == 'gz':
+                inFile = os.path.join(root, fileName)
+                fileToUzip(inFile)
 
-if __name__ == "__main__":
-    folderUzip()
