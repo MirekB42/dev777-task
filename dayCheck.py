@@ -8,7 +8,7 @@ import toGzip
 #./log                          - testovaci slozka
 # /home/miroslav/job/log        - testovaci slozka uplna adresa pro cron
 # /var/log                      - slozka, ve ktere bude script pracovat
-DIRECTORY = '/home/miroslav/job/log'
+DIRECTORY = './log'
 #referencni datum od ktereho zacina komprese kazdych 30 dni
 REFERENCE_DATE = datetime(2022, 8, 13)
 #datum spusteni skriptu
