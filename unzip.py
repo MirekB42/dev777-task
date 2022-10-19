@@ -5,9 +5,11 @@ import sys
 
 #dekomprese souboru
 def fileToUzip(filePath):
-    inFile = gzip.open(filePath, 'rb')
-    outFile = open(filePath[:-3], 'wb')
+    inFile = gzip.open(filePath, 'rb+')
+    outFile = open(filePath[:-3], 'wb+')
     shutil.copyfileobj(inFile, outFile)
+    outFile.close()
+    inFile.close()
     os.remove(filePath)
 
 #dekomprese vsech souboru vcetne tech v podlsozkach

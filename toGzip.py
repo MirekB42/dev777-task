@@ -9,13 +9,19 @@ from datetime import datetime
 #funkce provadejici kompresi jednoho souboru
 def fileToGzip(filePath):
     #soubor pred kompresi
-    inFile = open(filePath, 'rb')
+    inFile = open(filePath, 'rb+')
     #soubor po kompresi
-    outFile = gzip.open(filePath + '.gz', 'wb')
+    outFile = gzip.open(filePath + '.gz', 'wb+')
     #kopirovani obsahu
     shutil.copyfileobj(inFile,outFile)
-    #odstraneni puvodniho nekomprimovaneho souboru
-    os.remove(filePath)
+    outFile.close()
+    inFile.close()
+    try:
+        #odstraneni puvodniho nekomprimovaneho souboru
+        os.remove(filePath)
+    except OSError:
+        pass
+
     
 #funkce provadejici kompresi vsech souboru v slozce a jejich podslozkach
 def folderToGzip(folder):

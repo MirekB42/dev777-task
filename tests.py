@@ -9,7 +9,7 @@ from datetime import datetime
 
 def testDate():
     secondDate = datetime(2022, 9, 12)
-    firstDate = datetime.now()
+    firstDate = datetime(2022, 10, 12)
 
     #12.10.2022 - 12.9.2022 = 30 dni % 30 = 0
     if toGzip.checkDate(firstDate,secondDate) != 0:
